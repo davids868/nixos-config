@@ -1,9 +1,12 @@
-{ config, pkgs, lib, currentSystem, currentSystemName,... }:
+{ config, pkgs, lib, currentSystem, currentSystemName, ... }:
 
 {
   # Be careful updating this.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  nixpkgs.config.allowUnfree = true;
+
+  # use unstable nix so we can access flakes
   nix = {
     # use unstable nix so we can access flakes
     package = pkgs.nixUnstable;
@@ -16,8 +19,8 @@
     # public binary cache that I use for all my derivations. You can keep
     # this, use your own, or toss it. Its typically safe to use a binary cache
     # since the data inside is checksummed.
-    binaryCaches = ["https://mitchellh-nixos-config.cachix.org"];
-    binaryCachePublicKeys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
+    # binaryCaches = ["https://mitchellh-nixos-config.cachix.org"];
+    # binaryCachePublicKeys = ["mitchellh-nixos-config.cachix.org-1:bjEbXJyLrL1HZZHBbO4QALnI5faYZppzkU4D2s0G8RQ="];
   };
 
   # We expect to run the VM on hidpi machines.
@@ -25,17 +28,16 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # VMware, Parallels both only support this being 0 otherwise you see
-  # "error switching console mode" on boot.
   boot.loader.systemd-boot.consoleMode = "0";
+
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.timeout = 1;
 
   # Define your hostname.
   networking.hostName = "dev";
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "Europe/London";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -55,6 +57,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
+
     dpi = 220;
 
     desktopManager = {
@@ -69,8 +72,12 @@
       # AARCH64: For now, on Apple Silicon, we must manually set the
       # display resolution. This is a known issue with VMware Fusion.
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 200 40
-      '';
+        ${pkgs.xorg.xset}/bin/xset r rate 190 35
+      '' + (if currentSystemName == "vm-aarch64-prl" then ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --newmode "3840x2160_60.00" 712.34 3840 4152 4576 5312 2160 2161 2164 2235 -HSync +Vsync
+        ${pkgs.xorg.xrandr}/bin/xrandr --addmode Virtual-1 3840x2160_60.00
+        ${pkgs.xorg.xrandr}/bin/xrandr -s 3840x2160_60.00
+      '' else "");
     };
 
     windowManager = {
@@ -88,6 +95,11 @@
 
     fonts = [
       pkgs.fira-code
+      (pkgs.nerdfonts.override {
+        fonts = [
+          "FiraCode"
+        ];
+      })
     ];
   };
 
@@ -100,6 +112,7 @@
     niv
     rxvt_unicode
     xclip
+    clang
 
     # For hypervisors that support auto-resizing, this script forces it.
     # I've noticed not everyone listens to the udev events so this is a hack.
@@ -138,3 +151,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
 }
+
+
+

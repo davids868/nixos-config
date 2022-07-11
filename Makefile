@@ -1,20 +1,20 @@
 # Connectivity info for Linux VM
 NIXADDR ?= unset
 NIXPORT ?= 22
-NIXUSER ?= mitchellh
+NIXUSER ?= davids
 
 # Get the path to this Makefile and directory
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # The name of the nixosConfiguration in the flake
-NIXNAME ?= vm-intel
+NIXNAME ?= vm-aarch64-prl
 
 # SSH options that are used. These aren't meant to be overridden but are
 # reused a lot so we just store them up here.
 SSH_OPTIONS=-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
 switch:
-	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${NIXNAME}"
+	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild --use-remote-sudo switch --flake ".#${NIXNAME}"
 
 test:
 	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild test --flake ".#$(NIXNAME)"
@@ -31,9 +31,6 @@ cache:
 # and just set the password of the root user to "root". This will install
 # NixOS. After installing NixOS, you must reboot and set the root password
 # for the next step.
-#
-# NOTE(mitchellh): I'm sure there is a way to do this and bootstrap all
-# in one step but when I tried to merge them I got errors. One day.
 vm/bootstrap0:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/nvme0n1 -- mklabel gpt; \

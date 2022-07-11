@@ -167,16 +167,40 @@
         "url": "https://github.com/oh-my-fish/theme-bobthefish/archive/1eaed8c39951029fa7839859abd5518977a80f83.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "tmux-continuum": {
+        "branch": "master",
+        "description": "Continuous saving of tmux environment. Automatic restore when tmux is started. Automatic tmux start when computer is turned on.",
+        "homepage": "",
+        "owner": "tmux-plugins",
+        "repo": "tmux-continuum",
+        "rev": "fc2f31d79537a5b349f55b74c8ca69abaac1ddbb",
+        "sha256": "06i1jp83iybw76raaxciqz9a7ypgpkvbyjn6jjap8jpqfmj2wmjb",
+        "type": "tarball",
+        "url": "https://github.com/tmux-plugins/tmux-continuum/archive/fc2f31d79537a5b349f55b74c8ca69abaac1ddbb.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "tmux-dracula": {
         "branch": "master",
         "description": "🧛🏻‍♂️ Dark theme for tmux",
         "homepage": "https://draculatheme.com/tmux",
         "owner": "dracula",
         "repo": "tmux",
-        "rev": "d311e94d868b0d59a896a4c09b6f658b1059519f",
-        "sha256": "0i8vy40agd36vlgdn29idy26k06wn006kma8j1pnp3715jdiq1az",
+        "rev": "5b282b043f760bd27b6d8c32b10d111f618b4c21",
+        "sha256": "01qwb62l8gym25g09n85zxk7m118m9dsz8f07s4fyr48svc666hf",
         "type": "tarball",
-        "url": "https://github.com/dracula/tmux/archive/d311e94d868b0d59a896a4c09b6f658b1059519f.tar.gz",
+        "url": "https://github.com/dracula/tmux/archive/5b282b043f760bd27b6d8c32b10d111f618b4c21.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tmux-fzf": {
+        "branch": "master",
+        "description": "Use fzf to manage your tmux work environment!",
+        "homepage": "",
+        "owner": "sainnhe",
+        "repo": "tmux-fzf",
+        "rev": "1801dd525b39154745ea668fb6916035023949e3",
+        "sha256": "03wa436hgbwhfgqjjmyqhjwljyjk9xdlg03mlwdnmdjym4kbvpbv",
+        "type": "tarball",
+        "url": "https://github.com/sainnhe/tmux-fzf/archive/1801dd525b39154745ea668fb6916035023949e3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tmux-pain-control": {
@@ -189,6 +213,30 @@
         "sha256": "0w7a6n4n86ysiqcqj12j2hg9r5fznvbp3dz8pzas9q1k3avlk0zk",
         "type": "tarball",
         "url": "https://github.com/tmux-plugins/tmux-pain-control/archive/2db63de3b08fc64831d833240749133cecb67d92.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tmux-resurrect": {
+        "branch": "master",
+        "description": "Persists tmux environment across system restarts.",
+        "homepage": "",
+        "owner": "tmux-plugins",
+        "repo": "tmux-resurrect",
+        "rev": "ca6468e2deef11efadfe3a62832ae67742505432",
+        "sha256": "0d7jg5dy4jq64679rf2zqmqbvgiqvpcj5jxfljk7d7y86dnqhj3n",
+        "type": "tarball",
+        "url": "https://github.com/tmux-plugins/tmux-resurrect/archive/ca6468e2deef11efadfe3a62832ae67742505432.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tmux-yank": {
+        "branch": "master",
+        "description": "Tmux plugin for copying to system clipboard. Works on OSX, Linux and Cygwin.",
+        "homepage": "https://tmux-plugins.github.io/tmux-yank/",
+        "owner": "tmux-plugins",
+        "repo": "tmux-yank",
+        "rev": "1b1a436e19f095ae8f825243dbe29800a8acd25c",
+        "sha256": "02v6g6wrqzzjk4l2mcna1lg8100g5h88phy9g6f6rbcqzw2y86w5",
+        "type": "tarball",
+        "url": "https://github.com/tmux-plugins/tmux-yank/archive/1b1a436e19f095ae8f825243dbe29800a8acd25c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "tree-sitter-hcl": {
@@ -214,6 +262,19 @@
         "type": "tarball",
         "url": "https://github.com/mitchellh/tree-sitter-proto/archive/42d82fa18f8afe59b5fc0b16c207ee4f84cb185f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "tt": {
+        "branch": "master",
+        "description": "A terminal based typing test.",
+        "homepage": "",
+        "owner": "lemnos",
+        "repo": "tt",
+        "rev": "cd6bc11a2ebb23e1224a578a097e6674755457b3",
+        "sha256": "0kmhrx0ilyl0zf8lsbl3708wcw27xjvfyjq0cx5kj2p8nf7qzkj6",
+        "type": "file",
+        "url": "https://github.com/lemnos/tt/releases/download/v0.4.2/tt-linux",
+        "url_template": "https://github.com/lemnos/tt/releases/download/v0.4.2/tt-linux",
+        "version": "v0.4.2"
     },
     "vim-cue": {
         "branch": "master",

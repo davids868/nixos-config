@@ -1,0 +1,12 @@
+reporting: "off"
+startuppopupversion: 1
+services:
+  "gitlab.eu-west-1.mgmt.onfido.xyz": "gitlab:gitlab.eu-west-1.mgmt.onfido.xyz"
+gui:
+  theme:
+    selectedLineBgColor:
+      - reverse
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
