@@ -186,7 +186,14 @@ function dca
 end
 
 function venv
-  set -x VIRTUAL_PYTHON_PATH $(poetry env info --path)/bin/python
+  set -gx VIRTUAL_PYTHON_PATH $(poetry env info --path)/bin/python
+end
+
+function how
+  set language $argv[1]
+  set query (string join + $argv[2..-1])
+
+  curl cht.sh/$language/$query
 end
 
 function creds_aws_login_all
