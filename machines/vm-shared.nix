@@ -73,11 +73,10 @@
       # display resolution. This is a known issue with VMware Fusion.
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 190 35
-      '' + (if currentSystemName == "vm-aarch64-prl" then ''
         ${pkgs.xorg.xrandr}/bin/xrandr --newmode "3840x2160_60.00" 712.34 3840 4152 4576 5312 2160 2161 2164 2235 -HSync +Vsync
         ${pkgs.xorg.xrandr}/bin/xrandr --addmode Virtual-1 3840x2160_60.00
         ${pkgs.xorg.xrandr}/bin/xrandr -s 3840x2160_60.00
-      '' else "");
+      '';
     };
 
     windowManager = {
