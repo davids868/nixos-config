@@ -109,7 +109,7 @@
     gnumake
     killall
     niv
-    rxvt_unicode
+    rxvt-unicode-unwrapped
     xclip
     clang
 
