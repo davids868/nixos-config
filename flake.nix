@@ -96,5 +96,11 @@
         system = "x86_64-linux";
         user = "davids";
       };
+
+      nixosConfigurations.pi = mkVM "pi" rec {
+        inherit nixpkgs home-manager overlays inputs;
+        system = "aarch64-linux";
+        user = "davids";
+      };
     };
 }
